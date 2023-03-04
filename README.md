@@ -40,3 +40,15 @@ You can determine the organization-wide defaults you need for your app by answer
 1. Who is the most restricted user of this object?
 2. Is there ever going to be an instance of this object that this user shouldn't be allowed to see?
 3. Is there ever going to be an instance of this object that this user shouldn't be allowed to edit?
+
+**Overview of Record–Level Security**
+
+You can control data access with greater precision by allowing particular users to view an object, but then restricting the individual records within the object they're allowed to see. For example, you can use organization-wide defaults to set access for reviews to Private. You can then use role hierarchies to grant interviewers edit access to reviews that they own.
+
+Before configuring record access, you might find it useful to answer the following questions:
+Should your users have open access to every record, or just a subset?
+If it's a subset, what rules should determine whether the user can access them?
+Let's say you create a profile called Recruiter so you can create object–level permissions for recruiters. You can restrict the power to delete recruiting–related objects, like Positions or Candidates, so recruiters will never be able to delete these objects. However, the fact that you're granting recruiters permission to create, read, or edit recruiting objects does not necessarily mean recruiters are allowed to read or edit every recruiting object record, like individual positions or candidates. This is a consequence of two important concepts in the platform:
+The permissions on a record are always evaluated according to a combination of object–, field–, and record–level permissions.
+When object– versus record–level permissions conflict, the most restrictive settings win.
+What this means is that even if you grant a profile create, read, and edit permissions on the recruiting objects, if the record–level permissions for an individual recruiting record prove to be more restrictive, those are the rules that define what a recruiter can access. For example, if you give the Recruiter profile create, read, and edit permissions on the Candidates object but restrict recruiters' access to only the Candidate records they own, recruiters are only able to access those records.
